@@ -1,7 +1,18 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
+  padding: 0;
   background-color: #f0f0f0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+}
+.contenedor-central {
+  width: 100%;
+  max-width: 1280px;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 /* Encabezado Principal */
@@ -27,29 +38,40 @@ body {
   color: white;
   padding: 20px;
   text-align: center;
-  margin: 30px 20px 10px 20px;
+  margin: 40px 0 20px 0;
   font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
   border-radius: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  transform: skewX(-4deg);
+}
+
+.banner-marca h2 {
+   transform: skewX(4deg);
+  margin: 0;
 }
 
 /* Contenedor de productos */
 .productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 20px;
   padding: 20px;
+  max-width: 1000px;
+  box-sizing: border-box;
 }
 
 /* Cada producto */
 .producto {
-  background-color: white;
+ background-color: white;
   padding: 16px;
   text-align: center;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 220px;
   transition: transform 0.2s ease;
 }
 
@@ -86,3 +108,72 @@ body {
 .boton:hover {
   background-color: #0f70d4;
 }
+
+/* Estilo página carrito */
+.carrito-pagina {
+  max-width: 600px;
+  margin: 100px auto;
+  background-color: white;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 2px 14px rgba(0,0,0,0.15);
+}
+
+.carrito-pagina h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.carrito-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+}
+
+.carrito-item button {
+  background-color: #ff4d4d;
+  border: none;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.carrito-item button:hover {
+  background-color: #d93636;
+}
+
+.boton-carrito {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #1e90ff;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.3s ease;
+}
+
+.boton-carrito:hover {
+  background-color: #0f70d4;
+}
+.boton-volver {
+  align-self: flex-start;
+  margin-bottom: 20px;
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-volver:hover {
+  background-color: #333;
+}
+
