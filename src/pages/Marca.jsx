@@ -6,9 +6,7 @@ import ProductoCard from "../components/ProductoCard";
 function Marca({ agregarAlCarrito }) {
   const { nombre } = useParams();
   const navigate = useNavigate();
-  const productosMarca = productos
-    .filter((p) => p.marca === nombre)
-    .slice(0, 5); // ← mostrar solo 5
+  const productosMarca = productos.filter((p) => p.marca === nombre);
 
   return (
     <div className="contenedor-central">

@@ -21,7 +21,6 @@ function Home({ agregarAlCarrito }) {
           <div className="productos">
             {productos
               .filter((p) => p.marca === marca)
-              .slice(0, 3) // ← MUESTRA SOLO 3
               .map((producto) => (
                 <ProductoCard key={producto.id} producto={producto} agregarAlCarrito={agregarAlCarrito} />
               ))}

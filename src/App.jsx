@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useLocation } from "react-router-dom";
 import "./styles.css";
+import { CartProvider } from "./components/CartContext";
 
 import Home from "./pages/Home";
 import Marca from "./pages/Marca";
@@ -19,28 +20,18 @@ function Encabezado() {
 }
 
 function App() {
-  const [carrito, setCarrito] = useState([]);
-  
-  
-
-  const agregarAlCarrito = (producto) => {
-    setCarrito((prev) => [...prev, producto]);
-  };
-
-  const eliminarDelCarrito = (index) => {
-    setCarrito((prev) => prev.filter((_, i) => i !== index));
-  };
-
   return (
-    <Router>
-      <Encabezado />
-      <BotonCarrito cantidad={carrito.length} />
-      <Routes>
-        <Route path="/" element={<Home agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path="/marca/:nombre" element={<Marca agregarAlCarrito={agregarAlCarrito} />} />
-        <Route path="/carrito" element={<CarritoPage carrito={carrito} eliminarDelCarrito={eliminarDelCarrito} />} />
-      </Routes>
-    </Router>
+    <CartProvider>
+      <Router>
+        <Encabezado />
+        <BotonCarrito />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/marca/:nombre" element={<Marca />} />
+          <Route path="/carrito" element={<CarritoPage />} />
+        </Routes>
+      </Router>
+    </CartProvider>
   );
 }
 
