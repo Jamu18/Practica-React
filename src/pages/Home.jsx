@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import productos from "../data/productos";
 import ProductoCard from "../components/ProductoCard";
+import { normalizarTexto } from '../data/normalizarTexto';
 
 const marcas = [...new Set(productos.map(p => p.marca))];
 
@@ -20,9 +21,9 @@ function Home({ agregarAlCarrito }) {
 
           <div className="productos">
             {productos
-              .filter((p) => p.marca === marca)
+              .filter((p) => normalizarTexto(p.marca) === normalizarTexto(marca))
               .map((producto) => (
-                <ProductoCard key={producto.id} producto={producto} agregarAlCarrito={agregarAlCarrito} />
+                <ProductoCard key={producto.id} producto={producto} agregarAlCarrito={agregarAlCarrito} mostrarComprar={true} />
               ))}
           </div>
         </section>

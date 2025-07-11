@@ -8,7 +8,7 @@ import imgPantalonA from '../assets/productos/pantalonA.jpeg'; // Pantalón Adid
 import imgZapatosA from '../assets/productos/ZapatosA.jpg';   // Zapatos Adidas (usa la de Nike si no tienes otra)
 
 import imgCamisetaC from '../assets/productos/camisetaC.jpg';  // Camiseta Converse
-import imgPantalonC from '../assets/productos/mochilaC.jpeg';  // Pantalón Converse (puedes cambiar por otra imagen si tienes)
+import imgmochilaC from '../assets/productos/mochilaC.jpeg';  // Pantalón Converse (puedes cambiar por otra imagen si tienes)
 import imgZapatosC from '../assets/productos/zapatosC.jpeg';   // Zapatos Converse (usa la de Nike si no tienes otra)
 
 
@@ -67,9 +67,9 @@ const productos = [
   },
   {
     id: 8,
-    nombre: "Pantalón Converse",
+    nombre: "Mochila Converse",
     precio: "$38",
-    imagen: imgPantalonC,
+    imagen: imgmochilaC,
     marca: "Converse",
   },
   {

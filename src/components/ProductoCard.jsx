@@ -1,11 +1,18 @@
 import React, { useContext } from "react";
 import CartContext from "./CartContext";
+import { useNavigate } from "react-router-dom";
 
-function ProductoCard({ producto }) {
+function ProductoCard({ producto, mostrarComprar }) {
   const { cart, dispatch } = useContext(CartContext);
+  const navigate = useNavigate();
 
   const handleAdd = () => {
     dispatch({ type: "ADD_TO_CART", payload: producto });
+  };
+
+  const handleComprar = () => {
+    dispatch({ type: "ADD_TO_CART", payload: producto });
+    navigate("/carrito");
   };
 
   // Buscar si el producto ya está en el carrito
@@ -19,6 +26,15 @@ function ProductoCard({ producto }) {
       <button className="boton" onClick={handleAdd}>
         Agregar al carrito
       </button>
+      {mostrarComprar && (
+        <button
+          className="boton"
+          style={{ background: "#28a745", marginLeft: 8 }}
+          onClick={handleComprar}
+        >
+          Comprar
+        </button>
+      )}
       {cartItem && (
         <p
           style={{

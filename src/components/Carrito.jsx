@@ -26,49 +26,57 @@ function Carrito() {
   return (
     <div className="carrito">
       {cart.length === 0 ? (
-        <p>Tu carrito está vacío.</p>
+        <div style={{textAlign: 'center', color: '#888', fontSize: 18, margin: '40px 0'}}>
+          No hay productos agregados aún...
+        </div>
       ) : (
         <>
           <ul>
-            {cart.map((item) => (
-              <li key={item.id} style={{ marginBottom: "16px", display: "flex", alignItems: "center" }}>
-                <img src={item.imagen} alt={item.nombre} style={{ width: 60, height: 60, objectFit: "cover", marginRight: 12, borderRadius: 8 }} />
-                <div style={{ flex: 1 }}>
-                  <strong>{item.nombre}</strong>
-                  <div style={{ color: '#007bff', fontWeight: 'bold', margin: '4px 0' }}>
-                    Unidad: {item.quantity}
+            {cart.map((item) => {
+              const precioNum = Number(item.precio.replace(/[^\d.]/g, ""));
+              return (
+                <li key={item.id} style={{ marginBottom: "16px", display: "flex", alignItems: "center" }}>
+                  <img src={item.imagen} alt={item.nombre} style={{ width: 60, height: 60, objectFit: "cover", marginRight: 12, borderRadius: 8 }} />
+                  <div style={{ flex: 1 }}>
+                    <strong>{item.nombre}</strong>
+                    <div style={{ color: '#007bff', fontWeight: 'bold', margin: '4px 0' }}>
+                      Unidad: {item.quantity}
+                    </div>
+                    <span>{item.precio}</span>
+                    <div style={{ fontSize: '12px', color: '#888', marginTop: 2 }}>
+                      Precio x{item.quantity}: ${(precioNum * item.quantity).toFixed(2)}
+                    </div>
                   </div>
-                  <span>{item.precio}</span>
-                </div>
-                <button
-                  onClick={() => handleDecrement(item.id)}
-                  style={{ marginLeft: 4, padding: "2px 8px" }}
-                  disabled={item.quantity === 1}
-                >
-                  -
-                </button>
-                <button
-                  onClick={() => handleIncrement(item.id)}
-                  style={{ marginLeft: 4, padding: "2px 8px" }}
-                >
-                  +
-                </button>
-                <button
-                  onClick={() => handleRemove(item.id)}
-                  style={{
-                    marginLeft: 8,
-                    backgroundColor: "#ff4d4d",
-                    color: "white",
-                    border: "none",
-                    padding: "4px 8px",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                  }}
-                >
-                  Eliminar
-                </button>
-              </li>
-            ))}
+                  <button
+                    onClick={() => handleDecrement(item.id)}
+                    style={{ marginLeft: 4, padding: "2px 8px" }}
+                    disabled={item.quantity === 1}
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => handleIncrement(item.id)}
+                    style={{ marginLeft: 4, padding: "2px 8px" }}
+                  >
+                    +
+                  </button>
+                  <button
+                    onClick={() => handleRemove(item.id)}
+                    style={{
+                      marginLeft: 8,
+                      backgroundColor: "#ff4d4d",
+                      color: "white",
+                      border: "none",
+                      padding: "4px 8px",
+                      borderRadius: "6px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    Eliminar
+                  </button>
+                </li>
+              );
+            })}
           </ul>
           <div style={{
             margin: '32px auto 0 auto',
